@@ -1,13 +1,5 @@
 {
   "singleQuote": true,
   "trailingComma": "all",
-  "printWidth": 120,
-  "overrides": [
-    {
-      "files": "*.twig",
-      "options": {
-        "parser": "twig-parser"
-      }
-    }
-  ]
+  "printWidth": 120
 }

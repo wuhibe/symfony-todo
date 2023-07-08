@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     #[Route('/', methods: ['GET'], name: 'dashboard')]
-    public function index(LoggerInterface $logger): Response
+    public function index(): Response
     {
         return $this->render('index.html.twig');
     }
