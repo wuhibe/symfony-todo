@@ -1,18 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+	<form method="post" class="max-w-sm mx-auto mt-8">
+		{% if form_errors(registrationForm) %}
+			<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+				{{ form_errors(registrationForm) }}
+			</div>
+		{% endif %}
 
-    {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+		<h1 class="text-3xl font-bold mb-6">Registration</h1>
+		{{ form_start(registrationForm) }}
+		<div class="mb-4">
+			{{ form_row(registrationForm.email, { label: 'Email'})}}
+		</div>
+		<div class="mb-6">
+			{{ form_row(registrationForm.plainPassword, {label: 'Password'})}}
+		</div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-{% endblock %}
+		<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">
+			Register
+		</button>
+		{{ form_end(registrationForm) }}
+	{% endblock %}
