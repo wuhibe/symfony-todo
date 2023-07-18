@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<div class="flex flex-row justify-between">
+			{% if app.user %}
+				<p class="text-center">
+					You are logged in as
+					{{ app.user.email }}.
+				</p>
+				<a href="{{ path('app_logout') }}">
+					<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+						Logout
+					</button>
+				</a>
+			{% else %}
+				<p></p>
+				<div>
+					<a href="{{ path('app_register') }}">
+						<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+							Register
+						</button>
+					</a>
+					<a href="{{ path('app_login') }}">
+						<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+							Login
+						</button>
+					</a>
+				</div>
+			{% endif %}
+		</div>
+		{% block body %}{% endblock %}
+	</body>
 </html>
