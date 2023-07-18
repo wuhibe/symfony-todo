@@ -13,4 +13,17 @@ class DashboardController extends AbstractController
     {
         return $this->render('index.html.twig');
     }
+
+    #[Route('/api', methods: ['GET'], name: 'api')]
+    public function api(): Response
+    {
+        $apiArray = [
+            'message' => 'Welcome to your new API!',
+            'response' => [
+                'status' => 'success',
+                'code' => 200,
+            ],
+        ];
+        return $this->json($apiArray);
+    }
 }
